@@ -75,7 +75,30 @@ code --install-extension "humao.rest-client"
 
 Or setting your browser(s) to use the right search engine...I'm actually still working on that one...
 
-# The Outcome
+## The Sub...Scripts?
+
+Break up the installs where it makes sense. Setting up things _within_ WSL is kind of it's own thing. Thus, I have a [separate script](https://github.com/tmerkel/desktop-setup/blob/master/wsl-setup.bash) for that...
+
+```bash
+nvm install --lts
+sudo apt update && sudo apt upgrade
+sudo apt install build-essential
+sudo apt install awscli
+
+echo "Installing kubectl..."
+curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+chmod +x ./kubectl
+sudo mv ./kubectl /usr/local/bin/kubectl
+
+echo "export AWS_CONFIG_FILE='C:\Users\tmerk\.aws\config'
+export AWS_SHARED_CREDENTIALS_FILE='C:\Users\tmerk\.aws\credentials'
+
+alias k=kubectl" >> ~/.bashrc
+```
+
+Maybe you're running WSL on Windows like me and like this set up. Maybe you prefer to break your scripts into separate "install+configure" scripts for each program or tool you use. Do whatever makes the most sense for you.
+
+## The Outcome
 
 If you do this, hopefully your next install experience is...better. Probably it won't be perfect. At the time of this writing, I have to run my script twice to get everything installed because something conflicts with something else and I have no time...
 
