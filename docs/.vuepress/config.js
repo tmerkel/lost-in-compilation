@@ -5,19 +5,29 @@ module.exports = {
   themeConfig: {
     nav: [
       { text: "Home", link: "/" },
-      { text: "About Me", link: "/about-me/" }
+      { text: "About Me", link: "/about-me/" },
     ],
     sidebar: [
       {
-        title: "Getting Started", // required
-        path: "/", // optional, which should be a absolute path.
-        collapsable: true, // optional, defaults to true
-        sidebarDepth: 1, // optional, defaults to 1
+        title: "Knowledge Base",
+        sidebarDepth: 2,
         children: [
-          ["/", "Introduction"],
-          ["/desktop-setup/", "Desktop Setup"]
-        ]
-      }
-    ]
-  }
+          {
+            title: "Getting Started",
+            path: "/",
+            sidebarDepth: 1,
+            children: [
+              ["/", "Introduction"],
+              ["/knowledge-base/desktop-setup/", "Desktop Setup"],
+            ],
+          },
+          {
+            title: ".Net Core Web Api",
+            sidebarDepth: 2,
+            children: [["/knowledge-base/web-api/", "Overview"]],
+          },
+        ],
+      },
+    ],
+  },
 };
